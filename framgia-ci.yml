@@ -42,7 +42,6 @@ cache:
     file: composer.lock
   nodejs:
     folder: node_modules
-    file: yarn.lock
 deploy:
   docker:
     username: octocat
