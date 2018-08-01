@@ -6,15 +6,15 @@ build:
     - php artisan config:clear
     - composer install
     - framgia-ci test-connect mysql_test 3306 60
-    - php artisan migrate --database=mysql_test
+    - php artisan migrate --database=laravel_app
     - framgia-ci run
 services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: laravel_app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
   mysql_test:
     image: mysql:5.7
