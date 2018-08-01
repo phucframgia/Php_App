@@ -50,11 +50,6 @@ deploy:
     repo: dangminhtruong/Havana_Laravel
 project_type: php
 test:
-  eslint:
-    ignore: false
-    command: eslint --format=checkstyle
-      --output-file=.framgia-ci-reports/eslint.xml
-      resources/assets/js/ --ext .js
   phpcpd:
     ignore: true
     command: phpcpd --log-pmd=.framgia-ci-reports/phpcpd.xml app
