@@ -23,7 +23,7 @@ build:
       - composer install
       - framgia-ci test-connect mysql_test 3306 5
       - php artisan migrate --database=laravel_app
-      - framgia-ci run
+      - framgia-ci run --l
 test:
   eslint:
     ignore: false
