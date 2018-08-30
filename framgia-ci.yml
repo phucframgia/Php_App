@@ -24,11 +24,6 @@ build:
       - framgia-ci test-connect mysql 3306 5
       - php artisan migrate --database=laravel_app
 test:
-  eslint:
-    ignore: false
-    command: eslint --format=checkstyle
-      --output-file=.framgia-ci-reports/eslint.xml
-      resources/assets/js/ --ext .js
   phpcpd:
     ignore: true
     command: phpcpd --log-pmd=.framgia-ci-reports/phpcpd.xml app
@@ -46,9 +41,6 @@ test:
     command: phpmetrics --report-html=.framgia-ci-reports/metrics.html
       --report-xml=.framgia-ci-reports/metrics.xml
       app
-  phpcs:
-    ignore: false
-    command: echo '' | phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml --ignore=app/Supports/* app
   phpunit:
     ignore: false
     command:
