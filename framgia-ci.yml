@@ -1,14 +1,14 @@
 project_type: php
 build:
   general_test:
-    image: daothaison/civ3-workspace:latest
+    image: framgiaciteam/laravel-workspace:latest
     services:
       mysql:
         image: mysql:5.7
         environment:
-          MYSQL_DATABASE: homestead
-          MYSQL_USER: homestead
-          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: laravel_app
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
       mysql_test:
         image: mysql:5.7
@@ -21,9 +21,8 @@ build:
       - cp .env.test .env
       - php artisan config:clear
       - composer install
-      - framgia-ci test-connect mysql_test 3306 5
+      - framgia-ci test-connect mysql 3306 5
       - php artisan migrate --database=laravel_app
-      - framgia-ci run --local
 test:
   eslint:
     ignore: false
