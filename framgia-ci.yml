@@ -6,14 +6,7 @@ build:
       mysql:
         image: mysql:5.7
         environment:
-          MYSQL_DATABASE: laravel_app
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root
-          MYSQL_ROOT_PASSWORD: root
-      mysql_test:
-        image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: laravel_app
+          MYSQL_DATABASE: php_app
           MYSQL_USER: root
           MYSQL_PASSWORD: root
           MYSQL_ROOT_PASSWORD: root
@@ -22,7 +15,7 @@ build:
       - php artisan config:clear
       - composer install
       - framgia-ci test-connect mysql 3306 5
-      - php artisan migrate --database=laravel_app
+      - php artisan migrate --database=php_app
 test:
   phpcpd:
     ignore: true
@@ -41,6 +34,9 @@ test:
     command: phpmetrics --report-html=.framgia-ci-reports/metrics.html
       --report-xml=.framgia-ci-reports/metrics.xml
       app
+  phpcs:
+      ignore: false
+      command: echo '' | phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml --ignore=app/Supports/* app
   phpunit:
     ignore: false
     command:
