@@ -16,6 +16,7 @@ class Controller extends BaseController
         $arr = [
             'key1' => 1,
             'key2' => 2,
+            'key3' => 3,
         ];
 
         return $arr;
